@@ -1,0 +1,22 @@
+{
+  "name": "canvas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yujing",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.7",
+    "regexp-clone": "^0.0.1",
+    "sliced": "^1.0.1",
+    "socket.io": "^2.0.3"
+  }
+}

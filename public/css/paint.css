@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#opts {
+    width: 100%;
+    height: 100px;
+    display: box;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#opts>div {
+    flex: 1;
+    display: box;
+    display: -webkit-box;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0 20px;
+}
+
+#opts>div>button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#opts #userinfo #quit {
+    color: gray;
+    font-size: 12px;
+    text-align: right;
+}
+
+#opts #userinfo #notLogin {
+    color: blue;
+    font-size: 12px;
+    width: 100%;
+    text-align: right;
+}
+
+#opts #userinfo #notLogin #errMsg {
+    color: red;
+    text-align: left;
+}
+
+#opts #userinfo form {
+    font-size: 14px;
+}
+
+#tools {
+    position: absolute;
+    top: 100px;
+    bottom: 0;
+    width: 18%;
+    border: 1px solid gray;
+}
+
+#shapeStyle {
+    width: 80%;
+    margin: 10px auto;
+    line-height: 40px;
+    text-align: center;
+}
+
+#shapeStyle select {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+#thickness {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+#thickness>div {
+    width: 80%;
+    margin: 10px auto;
+    background: #666666 content-box;
+    padding: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+#thickness>div:hover {
+    border: 1px solid #999999;
+}
+
+.w1 {
+    height: 1px;
+}
+
+.w2 {
+    height: 2px;
+}
+
+.w5 {
+    height: 5px;
+}
+
+.w10 {
+    height: 10px;
+}
+
+.w15 {
+    height: 15px;
+}
+
+.w20 {
+    height: 20px;
+}
+
+#wrap {
+    position: absolute;
+    right: 0;
+    top: 100px;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 80%;
+    border: 30px solid gray;
+}
+
+#cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+#eraser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 10px;
+    height: 10px;
+    background: #999999;
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    #opts>div>button {
+        padding: 3px 5px;
+        margin-bottom: 3px;
+    }
+    #opts>#right {
+        display: none;
+    }
+}
+
+#now{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    animation: display 1.5s forwards;
+    display: none;
+}
+
+@keyframes display {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
