@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="public/css/paint.css">
+    <title>画图</title>
+</head>
+
+<body>
+    <div id="opts">
+        <div id="left">
+            <button type="button" id="paint" onclick="changeShape('paint')">画笔</button>
+            <button type="button" id="eraserBtn">橡皮擦</button>
+            <button type="button" id="clearAll">清除</button>
+        </div>
+        <div id="middle">
+            <button type="button" id="line" onclick="changeShape('line')">直线</button>
+            <button type="button" id="square" onclick="changeShape('square')">矩形</button>
+            <button type="button" id="circle" onclick="changeShape('circle')">圆形</button>
+            <button type="button" id="triangle" onclick="changeShape('triangle')">三角形</button>
+        </div>
+        <div id="right">
+            <button type="button" id="red" onclick="changeColor('red')">红色</button>
+            <button type="button" id="green" onclick="changeColor('green')">绿色</button>
+            <button type="button" id="lightblue" onclick="changeColor('lightblue')">浅蓝色</button>
+            <button type="button" id="yellow" onclick="changeColor('yellow')">黄色</button>
+            <button type="button" id="white" onclick="changeColor('white')">白色</button>
+            <button type="button" id="black" onclick="changeColor('black')">黑色</button>
+            <button type="button" id="blue" onclick="changeColor('blue')">浅蓝色</button>
+            <button type="button" id="orange" onclick="changeColor('orange')">橘色</button>
+        </div>
+    </div>
+    <div id="tools">
+        <div id="shapeStyle">
+            是否填充：
+            <select id="isFill">
+                <option value="1">填充</option>
+                <option value="0" selected>不填充</option>
+            </select>
+            <br>
+            <input type="color" name="color" onchange="changeColor(this.value)">
+        </div>
+        <div id="thickness">
+            <div class="w1" onclick="changeWidth(1)"></div>
+            <div class="w2" onclick="changeWidth(2)"></div>
+            <div class="w5" onclick="changeWidth(5)"></div>
+            <div class="w10" onclick="changeWidth(10)"></div>
+            <div class="w15" onclick="changeWidth(15)"></div>
+            <div class="w20" onclick="changeWidth(20)"></div>
+        </div>
+    </div>
+    <div id="wrap">
+        <canvas id="canvas" width="500px" height="300px"></canvas>
+        <div id="eraser"></div>
+        <div id="cover"></div>
+        <span style="display: none" id="dataURI"> <%=dataURI %> </span>
+    </div>
+
+    <div id="now">
+        <span id="nowpaint"></span>正在作画
+    </div>
+
+</body>
+<script src="public/js/jquery-1.12.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script src="public/js/paint.js"></script>
+<script src="public/js/login.js"></script>
+
+</html>
