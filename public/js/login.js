@@ -28,26 +28,26 @@ $(function() {
             function(data) {
                 if (data.state == 'ok') {
                     $('#userinfo').html('<button id="quit">退出</button> <br> <p>用户名：<span id="username">' + username + '</span></p> <br> <p>当前作画用户：<span>' + data.session.paintuser + '</span></p>')
-                    socket = io.connect('http://192.168.27.44:3000');
-                    if(data.session.paintuser != data.session.username){
+                    socket = io.connect('http://192.168.11.43:3000');
+                    if (data.session.paintuser != data.session.username) {
                         isPaint = false;
-                        context.clearRect(0,0,canvas.width,canvas.height);
+                        context.clearRect(0, 0, canvas.width, canvas.height);
                         $('#nowpaint').html(data.session.paintuser);
                         $('#now').css('display', 'block');
                         var image;
-                      setTimeout(function () {
-                        socket.on('dataURI', function (dataURI) {
-                            console.log('接受到数据');
-                              context.clearRect(0,0,canvas.width,canvas.height);
-                              image = new Image();
-                              image.src = dataURI;
-                              image.onload = function () {
-                                context.drawImage(image, 0, 0, canvas.width, canvas.height);
-                              }
-                        });
-                      }, 0);
+                        setTimeout(function() {
+                            socket.on('dataURI', function(dataURI) {
+                                console.log('接受到数据');
+                                image = new Image();
+                                image.src = dataURI;
+                                image.onload = function() {
+                                    context.clearRect(0, 0, canvas.width, canvas.height);
+                                    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+                                }
+                            });
+                        }, 0);
 
-                    }else{
+                    } else {
                         isPaint = true;
                         $('#nowpaint').html(data.session.username);
                         $('#now').css('display', 'none');

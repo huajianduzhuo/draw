@@ -146,6 +146,8 @@ app.post('/login', function(req, res) {
                     }
                 });
             }
+        } else {
+            console.log(err);
         }
     });
 
@@ -171,11 +173,11 @@ app.get('/getDataURI', function(req, res) {
     });
 });
 
-io.sockets.on('connection', function (socket) {
-    socket.on('dataURI', function (dataURI) {
+io.sockets.on('connection', function(socket) {
+    socket.on('dataURI', function(dataURI) {
         console.log('发送数据');
-      socket.emit('dataURI', dataURI);
-      socket.broadcast.emit('dataURI', dataURI);
+        socket.emit('dataURI', dataURI);
+        socket.broadcast.emit('dataURI', dataURI);
     });
 });
 
