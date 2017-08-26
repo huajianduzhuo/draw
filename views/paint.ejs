@@ -80,6 +80,15 @@
         <div id="cover"></div>
         <span style="display: none" id="dataURI"> <%=dataURI %> </span>
     </div>
+    <div id="chat">
+        <ul id="chatList">
+            
+        </ul>
+        <form>
+            <input type="text" name="chatContent" id="chatContent" />
+            <input type="button" id="sendChatContent" value="发送" />
+        </form>
+    </div>
 
     <div id="now">
         <span id="nowpaint"></span>正在作画
@@ -90,4 +99,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="/js/paint.js"></script>
     <script src="/js/login.js"></script>
+    <script src="/js/chat.js"></script>
 </html>

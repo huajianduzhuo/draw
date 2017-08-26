@@ -153,31 +153,16 @@ app.post('/login', function(req, res) {
 
 });
 
-app.post('/saveDataURI', function(req, res) {
-    var dataURI = req.body.dataURI;
-    PaintModel.remove({});
-    PaintModel.create({ dataURI: dataURI }, function(err) {
-        if (!err) {}
-    });
-});
-
-app.get('/getDataURI', function(req, res) {
-    PaintModel.findOne({}, function(err, data) {
-        if (!err) {
-            var dataURI = 'data:,';
-            if (data) {
-                dataURI = data.dataURI;
-            }
-            res.send({ dataURI: dataURI });
-        }
-    });
-});
 
 io.sockets.on('connection', function(socket) {
     socket.on('dataURI', function(dataURI) {
-        console.log('发送数据');
         socket.emit('dataURI', dataURI);
         socket.broadcast.emit('dataURI', dataURI);
+    });
+
+    socket.on('chat', function (chatinfo) {
+        socket.emit('chat', chatinfo);
+        socket.broadcast.emit('chat', chatinfo);
     });
 });
 

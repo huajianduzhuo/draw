@@ -28,7 +28,8 @@ $(function() {
             function(data) {
                 if (data.state == 'ok') {
                     $('#userinfo').html('<button id="quit">退出</button> <br> <p>用户名：<span id="username">' + username + '</span></p> <br> <p>当前作画用户：<span>' + data.session.paintuser + '</span></p>')
-                    socket = io.connect('http://192.168.11.43:3000');
+                    var url = window.location.protocol+'//'+window.location.host;
+                    socket = io.connect(url);
                     if (data.session.paintuser != data.session.username) {
                         isPaint = false;
                         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -37,7 +38,6 @@ $(function() {
                         var image;
                         setTimeout(function() {
                             socket.on('dataURI', function(dataURI) {
-                                console.log('接受到数据');
                                 image = new Image();
                                 image.src = dataURI;
                                 image.onload = function() {
@@ -52,6 +52,12 @@ $(function() {
                         $('#nowpaint').html(data.session.username);
                         $('#now').css('display', 'none');
                     }
+
+                    socket.on('chat', function (chatinfo) {
+                        $('#chatList').append('<li><span class="chatusername">' + chatinfo.username + '</span>：<span class="chatcontent">' + chatinfo.chatContent + '</span></li>');
+                        $('#chatList').scrollTop(10000);
+                    });
+
                 } else if (data.state == 'null') {
                     $('#errMsg').html('用户名或密码不能为空');
                     $('#errMsg').css('color', 'red');
