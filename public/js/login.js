@@ -88,4 +88,10 @@ $(function() {
             $('#userinfo').html('<p id="notLogin"><span id="errMsg"></span> [未登录]</p><form><label>用户名：</label><input type="text" name="username" id="username" required /><br><label>密码：</label><input type="password" name="password" id="password" required /><button type="button" id="login">登录</button></form>');
         });
     });
+
+    $(window).load(function() {
+        $.post('/quit', function() {
+            $('#userinfo').html('<p id="notLogin"><span id="errMsg"></span> [未登录]</p><form><label>用户名：</label><input type="text" name="username" id="username" required /><br><label>密码：</label><input type="password" name="password" id="password" required /><button type="button" id="login">登录</button></form>');
+        });
+    });
 });
